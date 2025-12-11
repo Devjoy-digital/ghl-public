@@ -297,3 +297,20 @@
   .lmb-card-primary .lmb-card-header-subtitle {
     color: rgba(255, 255, 255, 0.9);
   }
+
+  .lmb-card-secondary {
+    border: 2px solid var(--brand-secondary);
+  }
+
+  .lmb-card-secondary .lmb-card-header {
+    background: var(--brand-secondary);
+    color: white;
+  }
+
+  .lmb-card-secondary .lmb-card-header-title {
+    color: white;
+  }
+
+  .lmb-card-secondary .lmb-card-header-subtitle {
+    color: rgba(255, 255, 255, 0.9);
+  }
