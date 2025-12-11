@@ -94,24 +94,24 @@
       max-width: 350px;
       width: 100%;
       aspect-ratio: 350 / 300;
-      background-color: var(--color-brand-red);
+      background-color: var(--brand-primary);
       object-fit: cover;
       object-position: center;
-      border: 8px solid var(--color-brand-red);
-      box-shadow: var(--shadow-standard);
-      margin: var(--spacing-md);
-      border-radius: var(--border-radius-sm);
+      border: 8px solid var(--brand-primary);
+      box-shadow: var(--shadow-md);
+      margin: var(--space-6);
+      border-radius: var(--radius-sm);
       box-sizing: border-box;
   }
 
   
 .btn-primary {
-    background-color: var(--color-brand-red);
-    color: var(--color-white);
+    background-color: var(--brand-primary);
+    color: white;
     padding: 6px 12px;
-    border-radius: var(--border-radius-sm);
+    border-radius: var(--radius-sm);
     text-decoration: none;
-    font-family: var(--font-body);
+    font-family: var(--font-family);
     font-weight: 600;
     display: inline-block;
     transition: opacity 0.2s ease;
@@ -125,21 +125,21 @@
 
 .btn-secondary {
     background-color: transparent;
-    color: var(--color-brand-red);
+    color: var(--brand-primary);
     padding: 6px 12px;
-    border-radius: var(--border-radius-sm);
+    border-radius: var(--radius-sm);
     text-decoration: none;
-    font-family: var(--font-body);
+    font-family: var(--font-family);
     font-weight: 600;
     display: inline-block;
     transition: all 0.2s ease;
-    border: 2px solid var(--color-brand-red);
+    border: 2px solid var(--brand-primary);
     cursor: pointer;
 }
 
 .btn-secondary:hover {
-    background-color: var(--color-brand-red);
-    color: var(--color-white);
+    background-color: var(--brand-primary);
+    color: white;
 }
 
   /* ==========  LAKE BOTTOM CARD STYLING  ========== */
