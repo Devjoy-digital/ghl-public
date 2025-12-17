@@ -1,4 +1,8 @@
-/* Lake Monster Brewing - Design System */
+/* Lake Monster Brewing - Design System 
+  hosted at: https://devjoy-digital.github.io/ghl-public/lake-monster-brewing/assets/css/lmb-styles.css
+
+*/
+
 
 /* ==========  CSS VARIABLES  ========== */
 
@@ -31,14 +35,14 @@
   --font-size-lg: 1.125rem;
   --font-size-xl: 1.25rem;
 
-  /* Spacing Scale (8px baseline) */
-  --space-0: 0;
-  --space-1: 0.25rem;  /* 4px */
-  --space-2: 0.5rem;   /* 8px */
-  --space-3: 0.75rem;  /* 12px */
-  --space-4: 1rem;     /* 16px */
-  --space-6: 1.5rem;   /* 24px */
-  --space-8: 2rem;     /* 32px */
+  /* Spacing Scale */
+  --space-none: 0;
+  --space-xs: 0.25rem;     /* 4px */
+  --space-tight: 0.5rem;   /* 8px */
+  --space-snug: 0.75rem;   /* 12px */
+  --space-normal: 1rem;    /* 16px */
+  --space-wide: 1.5rem;    /* 24px */
+  --space-extra: 2rem;     /* 32px */
 
   /* Transitions */
   --transition-standard: 0.3s ease;
@@ -121,7 +125,7 @@
   background-position: center;
 }
 
-.hero-section .bg::after {
+.hero-section .dark-30-overlay {
   content: '';
   position: absolute;
   inset: 0;
@@ -142,43 +146,9 @@
   object-position: center;
   border: 8px solid var(--brand-primary);
   box-shadow: var(--shadow-md);
-  margin: var(--space-6);
+  margin: var(--space-wide);
   border-radius: var(--radius-sm);
   box-sizing: border-box;
-}
-
-/* ==========  LAKE BOTTOM CARD  ========== */
-
-.lake-bottom-card {
-  background: white;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-md);
-  transition: box-shadow var(--transition-fast);
-  position: relative;
-  min-height: 300px;
-  z-index: var(--z-content) !important;
-}
-
-.lake-bottom-card:hover {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-}
-
-.lake-bottom-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url('https://assets.cdn.filesafe.space/DPLJUQdVE2iUopVb0dfJ/media/690f755cccf3497be5f8c8a4.jpg');
-  background-position: bottom;
-  background-repeat: repeat-x;
-  opacity: 0.4;
-  z-index: 1;
-  pointer-events: none;
-  border-radius: var(--radius-lg);
-}
-
-.lake-bottom-card > * {
-  position: relative;
-  z-index: 2;
 }
 
 /* ==========  LIST STYLES  ========== */
@@ -191,19 +161,18 @@
 
 .lmb-list li {
   position: relative;
-  padding-left: 1.5rem;
-  margin-bottom: var(--space-2);
+  padding-left: 1.75rem;
+  margin-bottom: var(--space-tight);
 }
 
 .lmb-list li::before {
-  content: '';
+  content: '✓';
   position: absolute;
   left: 0;
-  top: 0.6em;
-  width: 6px;
-  height: 6px;
-  background-color: var(--brand-primary);
-  border-radius: 50%;
+  top: 0;
+  color: var(--brand-primary);
+  font-weight: 700;
+  font-size: 1.1em;
 }
 
 .lmb-bullets {
@@ -214,7 +183,7 @@
 
 .lmb-bullets li {
   position: relative;
-  margin-bottom: var(--space-2);
+  margin-bottom: var(--space-tight);
 }
 
 .lmb-bullets li::before {
@@ -230,23 +199,23 @@
 
 /* ==========  CARD COMPONENT  ========== */
 
-.lmb-card {
+/* Base Card */
+
+.card {
   background: white;
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-md);
   overflow: hidden;
-  transition: box-shadow var(--transition-fast);
+  position: relative;
+  box-shadow: var(--shadow-md);
 }
 
-.lmb-card:hover {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+/* Card Structure */
+
+.card-header {
+  padding: var(--space-wide) var(--space-wide) var(--space-snug) var(--space-wide);
 }
 
-.lmb-card-header {
-  padding: var(--space-6) var(--space-6) var(--space-3) var(--space-6);
-}
-
-.lmb-card-header-title {
+.card-header-title {
   font-family: var(--font-family-heading);
   font-size: var(--font-size-xl);
   font-weight: 700;
@@ -254,62 +223,116 @@
   margin: 0;
 }
 
-.lmb-card-header-subtitle {
+.card-header-subtitle {
   font-family: var(--font-family-heading);
   font-size: var(--font-size-sm);
   color: var(--text-secondary);
-  margin: var(--space-2) 0 0 0;
+  margin: var(--space-tight) 0 0 0;
 }
 
-.lmb-card-body {
-  padding: var(--space-6);
+.card-body {
+  padding: var(--space-wide);
 }
 
-.lmb-card-footer {
-  padding: var(--space-6);
+.card-footer {
+  padding: var(--space-wide);
   border-top: 1px solid var(--bg-secondary);
-  background: var(--bg-primary);
+  background: white;
 }
 
-.lmb-card-image {
+.card-image {
   width: 100%;
   height: auto;
   display: block;
 }
 
-/* Card Variants */
+/* ----------  Card Variants  ---------- */
 
-.lmb-card-primary {
+/* Hero Overlay - Floats above section with overlap */
+
+.card.hero-overlay {
+  position: relative;
+  margin-right: var(--space-wide);
+  margin-bottom: var(--space-wide);
+  margin-left: var(--space-wide);
+  z-index: var(--z-content);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.card.hero-overlay:hover {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+}
+
+/* Lake Bottom - Decorative water background */
+
+.card.lake-bottom {
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card.lake-bottom .card-body {
+  flex: 1;
+}
+
+.card.lake-bottom::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('https://assets.cdn.filesafe.space/DPLJUQdVE2iUopVb0dfJ/media/690f755cccf3497be5f8c8a4.jpg');
+  background-position: bottom;
+  background-repeat: repeat-x;
+  opacity: 0.4;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: var(--radius-lg);
+}
+
+.card.lake-bottom > * {
+  position: relative;
+  z-index: 1;
+}
+
+.card.lake-bottom .card-footer {
+  background: transparent;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+} border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+/* Primary - Brand colored header */
+
+.card.primary {
   border: 2px solid var(--brand-primary);
 }
 
-.lmb-card-primary .lmb-card-header {
+.card.primary .card-header {
   background: var(--brand-primary);
   color: white;
 }
 
-.lmb-card-primary .lmb-card-header-title {
+.card.primary .card-header-title {
   color: white;
 }
 
-.lmb-card-primary .lmb-card-header-subtitle {
+.card.primary .card-header-subtitle {
   color: rgba(255, 255, 255, 0.9);
 }
 
-.lmb-card-secondary {
+/* Secondary - Secondary colored header */
+
+.card.secondary {
   border: 2px solid var(--brand-secondary);
 }
 
-.lmb-card-secondary .lmb-card-header {
+.card.secondary .card-header {
   background: var(--brand-secondary);
   color: white;
 }
 
-.lmb-card-secondary .lmb-card-header-title {
+.card.secondary .card-header-title {
   color: white;
 }
 
-.lmb-card-secondary .lmb-card-header-subtitle {
+.card.secondary .card-header-subtitle {
   color: rgba(255, 255, 255, 0.9);
 }
 
@@ -560,18 +583,18 @@
 #footer {
   background: var(--bg-dark);
   color: white;
-  padding: var(--space-8) var(--space-4);
+  padding: var(--space-extra) var(--space-normal);
   text-align: center;
 }
 
 .back-to-top-link {
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-wide);
 }
 
 .back-to-top-link a {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2);
+  gap: var(--space-tight);
   color: white;
   text-decoration: none;
   font-family: var(--font-family-heading);
@@ -593,7 +616,7 @@
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
   border-bottom: 8px solid white;
-  margin-right: var(--space-1);
+  margin-right: var(--space-xs);
 }
 
 .footer-wrapper {
@@ -605,7 +628,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-6);
+  gap: var(--space-wide);
 }
 
 .footer-address {
@@ -630,7 +653,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-4);
+  gap: var(--space-normal);
 }
 
 .social-link {
