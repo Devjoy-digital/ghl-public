@@ -1798,3 +1798,52 @@
   max-width: 100% !important;
 }
 
+/* Primary Card Adapter */
+.hl_page-preview--content .lmb-card.lmb-primary.c-row,
+.lmb-card.lmb-primary.c-row {
+  border: 2px solid var(--brand-primary) !important;
+}
+
+/* Attempt to style the first heading as a Card Header */
+.hl_page-preview--content .lmb-card.lmb-primary.c-row .c-column > .inner > .c-heading:first-child,
+.lmb-card.lmb-primary.c-row .c-column > .inner > .c-heading:first-child {
+  margin-top: calc(var(--space-wide) * -1) !important;
+  margin-left: calc(var(--space-wide) * -1) !important;
+  margin-right: calc(var(--space-wide) * -1) !important;
+  padding: var(--space-wide) !important;
+  background: var(--brand-primary) !important;
+  margin-bottom: var(--space-normal) !important;
+}
+
+.hl_page-preview--content .lmb-card.lmb-primary.c-row .c-column > .inner > .c-heading:first-child h1,
+.hl_page-preview--content .lmb-card.lmb-primary.c-row .c-column > .inner > .c-heading:first-child h2,
+.lmb-card.lmb-primary.c-row .c-column > .inner > .c-heading:first-child h1,
+.lmb-card.lmb-primary.c-row .c-column > .inner > .c-heading:first-child h2 {
+  color: white !important;
+  margin-bottom: 0 !important;
+}
+
+/* Secondary Card Adapter */
+.hl_page-preview--content .lmb-card.lmb-secondary.c-row,
+.lmb-card.lmb-secondary.c-row {
+  border: 2px solid var(--brand-secondary) !important;
+}
+
+.hl_page-preview--content .lmb-card.lmb-secondary.c-row .c-column > .inner > .c-heading:first-child,
+.lmb-card.lmb-secondary.c-row .c-column > .inner > .c-heading:first-child {
+  margin-top: calc(var(--space-wide) * -1) !important;
+  margin-left: calc(var(--space-wide) * -1) !important;
+  margin-right: calc(var(--space-wide) * -1) !important;
+  padding: var(--space-wide) !important;
+  background: var(--brand-secondary) !important;
+  margin-bottom: var(--space-normal) !important;
+}
+
+.hl_page-preview--content .lmb-card.lmb-secondary.c-row .c-column > .inner > .c-heading:first-child h1,
+.hl_page-preview--content .lmb-card.lmb-secondary.c-row .c-column > .inner > .c-heading:first-child h2,
+.lmb-card.lmb-secondary.c-row .c-column > .inner > .c-heading:first-child h1,
+.lmb-card.lmb-secondary.c-row .c-column > .inner > .c-heading:first-child h2 {
+  color: white !important;
+  margin-bottom: 0 !important;
+}
+
