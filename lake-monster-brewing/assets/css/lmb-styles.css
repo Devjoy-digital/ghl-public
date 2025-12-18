@@ -1847,3 +1847,33 @@
   margin-bottom: 0 !important;
 }
 
+/* Lake Bottom Card Adapter */
+.hl_page-preview--content .lmb-card.lmb-lake-bottom.c-row,
+.lmb-card.lmb-lake-bottom.c-row {
+  min-height: 300px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  position: relative !important;
+}
+
+.hl_page-preview--content .lmb-card.lmb-lake-bottom.c-row::before,
+.lmb-card.lmb-lake-bottom.c-row::before {
+  content: '' !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background-image: url('https://assets.cdn.filesafe.space/DPLJUQdVE2iUopVb0dfJ/media/690f755cccf3497be5f8c8a4.jpg') !important;
+  background-position: bottom !important;
+  background-repeat: repeat-x !important;
+  opacity: 0.4 !important;
+  z-index: 0 !important;
+  pointer-events: none !important;
+  border-radius: var(--radius-lg) !important;
+}
+
+.hl_page-preview--content .lmb-card.lmb-lake-bottom.c-row > .inner,
+.lmb-card.lmb-lake-bottom.c-row > .inner {
+  position: relative !important;
+  z-index: 1 !important;
+  flex: 1 !important;
+}
+
