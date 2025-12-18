@@ -1748,18 +1748,21 @@
 /* 
    These styles attempt to map the Design System classes to 
    Go High Level's native builder structure (Rows/Columns).
+   !important is used to override GHL's high-specificity default styles.
 */
 
 /* Card Adapter */
+.hl_page-preview--content .lmb-card.c-row,
 .lmb-card.c-row {
-  background: white;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: var(--shadow-md);
-  margin-bottom: var(--space-wide);
+  background: white !important;
+  border-radius: var(--radius-lg) !important;
+  overflow: hidden !important;
+  box-shadow: var(--shadow-md) !important;
+  margin-bottom: var(--space-wide) !important;
 }
 
 /* Fix GHL Column padding inside a card */
+.hl_page-preview--content .lmb-card.c-row .c-column > .inner,
 .lmb-card.c-row .c-column > .inner {
   padding: var(--space-wide) !important;
 }
@@ -1768,29 +1771,30 @@
 .lmb-card.c-row h1,
 .lmb-card.c-row h2,
 .lmb-card.c-row .c-heading {
-  font-family: var(--font-family-heading);
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-top: 0;
-  margin-bottom: var(--space-tight);
+  font-family: var(--font-family-heading) !important;
+  font-weight: 700 !important;
+  color: var(--text-primary) !important;
+  margin-top: 0 !important;
+  margin-bottom: var(--space-tight) !important;
 }
 
-.lmb-card.c-row h1 { font-size: var(--font-size-xl); }
-.lmb-card.c-row h2 { font-size: var(--font-size-lg); color: var(--text-secondary); }
+.lmb-card.c-row h1 { font-size: var(--font-size-xl) !important; }
+.lmb-card.c-row h2 { font-size: var(--font-size-lg) !important; color: var(--text-secondary) !important; }
 
 /* Map GHL Paragraphs to Card Body Styles */
 .lmb-card.c-row p,
 .lmb-card.c-row .c-paragraph {
-  font-family: var(--font-family);
-  color: var(--text-secondary);
-  margin-bottom: var(--space-normal);
+  font-family: var(--font-family) !important;
+  color: var(--text-secondary) !important;
+  margin-bottom: var(--space-normal) !important;
 }
 
 /* Hero Overlay Adapter */
+.hl_page-preview--content .lmb-card.lmb-hero-overlay.c-row,
 .lmb-card.lmb-hero-overlay.c-row {
-  position: relative;
-  z-index: var(--z-content);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-  max-width: 100%; /* Ensure it doesn't overflow */
+  position: relative !important;
+  z-index: var(--z-content) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15) !important;
+  max-width: 100% !important;
 }
 
