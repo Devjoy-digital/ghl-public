@@ -480,29 +480,52 @@ a:hover {
   z-index: var(--z-header);
   transition: var(--transition-slow);
   padding: 0;
-  background: transparent;
+  background: transparent !important;
+  min-height: 80px;
+}
+
+/* Ensure header starts transparent (override any GHL defaults) */
+.dj-header:not([data-scrolled="true"]) {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Initial state: Links should be dark/visible on transparent background */
+.dj-header:not([data-scrolled="true"]) .nav-link,
+.dj-header:not([data-scrolled="true"]) nav a,
+.dj-header:not([data-scrolled="true"]) .header-nav a,
+.dj-header:not([data-scrolled="true"]) .c-column.header-nav a,
+.dj-header:not([data-scrolled="true"]) ul li a,
+.dj-header:not([data-scrolled="true"]) .c-column ul a,
+.dj-header:not([data-scrolled="true"]) .c-column ol a {
+  color: var(--text-primary) !important;
+  font-weight: var(--font-medium);
 }
 
 .dj-header[data-scrolled="true"] {
-  background: rgba(15, 23, 42, 0.98);
+  background: rgba(15, 23, 42, 0.98) !important;
   backdrop-filter: blur(10px);
   box-shadow: var(--shadow-md);
+  min-height: 72px;
 }
 
 .dj-header .header-inner,
 .dj-header .c-row {
   max-width: var(--container-max);
   margin: 0 auto;
-  padding: var(--space-4);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  padding: var(--space-4) var(--space-6);
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
   transition: var(--transition-slow);
+  width: 100%;
+  min-height: 80px;
 }
 
 .dj-header[data-scrolled="true"] .header-inner,
 .dj-header[data-scrolled="true"] .c-row {
-  padding: var(--space-3) var(--space-4);
+  padding: var(--space-3) var(--space-6);
+  min-height: 72px;
 }
 
 /* Logo Styles */
@@ -513,9 +536,15 @@ a:hover {
 }
 
 .dj-header .header-logo img {
-  height: 80px;
+  height: 60px;
   width: auto;
   transition: var(--transition-slow);
+  display: block;
+}
+
+/* Ensure logo is visible and properly sized initially */
+.dj-header:not([data-scrolled="true"]) .header-logo img {
+  height: 60px;
 }
 
 .dj-header[data-scrolled="true"] .header-logo img {
@@ -541,9 +570,17 @@ a:hover {
 /* Navigation Styles */
 .dj-header .header-nav,
 .dj-header .c-column.header-nav {
-  display: flex;
-  align-items: center;
-  gap: var(--space-8);
+  display: flex !important;
+  align-items: center !important;
+  gap: var(--space-6);
+  flex-wrap: nowrap;
+}
+
+/* Ensure navigation links are properly spaced */
+.dj-header .header-nav a,
+.dj-header .c-column.header-nav a {
+  white-space: nowrap;
+  padding: var(--space-2) 0;
 }
 
 .dj-header .nav-links {
@@ -569,6 +606,17 @@ a:hover {
   text-decoration: none;
   transition: var(--transition-base);
   position: relative;
+}
+
+/* When scrolled, links are white on dark background */
+.dj-header[data-scrolled="true"] .nav-link,
+.dj-header[data-scrolled="true"] nav a,
+.dj-header[data-scrolled="true"] .header-nav a,
+.dj-header[data-scrolled="true"] .c-column.header-nav a,
+.dj-header[data-scrolled="true"] ul li a,
+.dj-header[data-scrolled="true"] .c-column ul a,
+.dj-header[data-scrolled="true"] .c-column ol a {
+  color: var(--text-on-dark);
 }
 
 .dj-header .nav-link::after,
