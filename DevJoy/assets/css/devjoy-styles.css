@@ -1,4 +1,20 @@
-/* DevJoy - Site-Level CSS Styles   
+/* DevJoy - Site-Level CSS Styles
+   hosted at: https://devjoy-digital.github.io/ghl-public/DevJoy/assets/css/devjoy-styles.css
+
+   ================================
+
+   This file consolidates all component styles into a single site-level CSS file
+   following GoHighLevel CSS patterns.
+
+   USAGE:
+   Include in GHL page settings > Custom Code > Head Code:
+
+   <!-- DevJoy Design System -->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <!-- Audi-inspired typography: Using system fonts for clean, modern sans-serif -->
+   <link rel="stylesheet" href="https://devjoy-digital.github.io/ghl-public/DevJoy/assets/css/devjoy-styles.css">
+
    IMPORTANT: This file works WITH GHL's native CSS classes:
    - .c-row, .c-column, .c-heading, .c-paragraph, .inner, .bg, .section-[ID]
    - Uses !important where needed to override GHL's high-specificity defaults
@@ -243,7 +259,8 @@ a:hover {
   z-index: 0 !important;
 }
 
-[class*="dj-hero"] .bg::after {
+/* Hero overlay - only apply if NO-OVERLAY class is NOT present */
+[class*="dj-hero"]:not([class*="dj-hero-no-overlay"]) .bg::after {
   content: '' !important;
   position: absolute !important;
   inset: 0 !important;
@@ -256,10 +273,13 @@ a:hover {
   z-index: 1 !important;
 }
 
-/* Disable overlay when using dj-hero-no-overlay modifier */
-[class*="dj-hero-no-overlay"] .bg::after {
+/* Disable overlay when using dj-hero-no-overlay modifier - higher specificity */
+[class*="dj-hero-no-overlay"] .bg::after,
+[class*="dj-hero"][class*="dj-hero-no-overlay"] .bg::after {
   display: none !important;
   content: none !important;
+  background: none !important;
+  opacity: 0 !important;
 }
 
 [class*="dj-hero"] .inner {
