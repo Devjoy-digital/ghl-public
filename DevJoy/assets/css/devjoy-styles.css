@@ -1,6 +1,5 @@
 /* DevJoy - Site-Level CSS Styles
-
-   IMPORTANT: This file works WITH GHL's native CSS classes:
+      IMPORTANT: This file works WITH GHL's native CSS classes:
    - .c-row, .c-column, .c-heading, .c-paragraph, .inner, .bg, .section-[ID]
    - Uses !important where needed to override GHL's high-specificity defaults
 
@@ -19,6 +18,11 @@
    12. Pricing Cards Component
    13. Contact Form Component
 */
+
+/* ==========================================================
+   1. CSS VARIABLES (DESIGN SYSTEM)
+   ========================================================== */
+
 :root {
   /* ==========  BRAND COLOR PALETTE - AUDI INSPIRED  ========== */
 
@@ -204,8 +208,239 @@ a:hover {
 }
 
 /* ==========================================================
-   3. UTILITY CLASSES
+   3. UTILITY CLASSES FOR GHL PAGE BUILDER
+   ========================================================== 
+   
+   These utility classes work with GHL's standard page builder structure:
+   - Add class to Section element in GHL builder
+   - Classes target GHL's structure: .section-[ID] > .inner > .c-row > .c-column
+   - High specificity ensures styles override GHL defaults
+   - Works in both builder preview and live site
+   
+   USAGE:
+   1. In GHL page builder, click on a Section element
+   2. Add utility class(es) to the "CSS Class" field (e.g., "dj-hero dj-text-center")
+   3. Build your content using GHL's standard elements (Row, Column, Heading, Paragraph, etc.)
+   4. Styles automatically apply to GHL's native elements
    ========================================================== */
+
+/* ========== SECTION LAYOUT UTILITIES ========== */
+
+/* Full viewport height hero section */
+[class*="dj-hero"] {
+  position: relative !important;
+  min-height: 100vh !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+}
+
+/* Hero background overlay - targets GHL's .bg element */
+[class*="dj-hero"] .bg {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 0 !important;
+}
+
+[class*="dj-hero"] .bg::after {
+  content: '' !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.95) 0%,
+    rgba(15, 23, 42, 0.85) 50%,
+    rgba(15, 23, 42, 0.75) 100%
+  ) !important;
+  z-index: 1 !important;
+}
+
+[class*="dj-hero"] .inner {
+  position: relative !important;
+  z-index: 2 !important;
+  width: 100% !important;
+}
+
+/* Section padding utilities */
+[class*="dj-section-padding"] {
+  padding: var(--space-16) 0 !important;
+}
+
+[class*="dj-section-padding-lg"] {
+  padding: var(--space-20) 0 !important;
+}
+
+[class*="dj-section-padding-xl"] {
+  padding: var(--space-24) 0 !important;
+}
+
+[class*="dj-section-padding-sm"] {
+  padding: var(--space-12) 0 !important;
+}
+
+/* ========== SECTION BACKGROUND UTILITIES ========== */
+
+/* Light background section */
+[class*="dj-section-light"] {
+  background: var(--bg-secondary) !important;
+}
+
+[class*="dj-section-light"] .inner {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+/* Dark background section */
+[class*="dj-section-dark"] {
+  background: var(--bg-dark) !important;
+}
+
+[class*="dj-section-dark"] .inner {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+/* Darker background section */
+[class*="dj-section-darker"] {
+  background: var(--bg-darker) !important;
+}
+
+[class*="dj-section-darker"] .inner {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+/* CTA/Gradient section */
+[class*="dj-section-cta"] {
+  background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-secondary-light) 100%) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+[class*="dj-section-cta"] .inner {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+/* ========== TYPOGRAPHY UTILITIES FOR GHL ELEMENTS ========== */
+
+/* Text alignment - applies to all content in section */
+[class*="dj-text-center"] .inner,
+[class*="dj-text-center"] .c-heading,
+[class*="dj-text-center"] .c-paragraph,
+[class*="dj-text-center"] h1,
+[class*="dj-text-center"] h2,
+[class*="dj-text-center"] h3,
+[class*="dj-text-center"] h4,
+[class*="dj-text-center"] h5,
+[class*="dj-text-center"] h6,
+[class*="dj-text-center"] p {
+  text-align: center !important;
+}
+
+[class*="dj-text-left"] .inner,
+[class*="dj-text-left"] .c-heading,
+[class*="dj-text-left"] .c-paragraph,
+[class*="dj-text-left"] h1,
+[class*="dj-text-left"] h2,
+[class*="dj-text-left"] h3,
+[class*="dj-text-left"] h4,
+[class*="dj-text-left"] h5,
+[class*="dj-text-left"] h6,
+[class*="dj-text-left"] p {
+  text-align: left !important;
+}
+
+[class*="dj-text-right"] .inner,
+[class*="dj-text-right"] .c-heading,
+[class*="dj-text-right"] .c-paragraph,
+[class*="dj-text-right"] h1,
+[class*="dj-text-right"] h2,
+[class*="dj-text-right"] h3,
+[class*="dj-text-right"] h4,
+[class*="dj-text-right"] h5,
+[class*="dj-text-right"] h6,
+[class*="dj-text-right"] p {
+  text-align: right !important;
+}
+
+/* Text color utilities - for dark sections */
+[class*="dj-section-dark"] .c-heading,
+[class*="dj-section-dark"] h1,
+[class*="dj-section-dark"] h2,
+[class*="dj-section-dark"] h3,
+[class*="dj-section-dark"] h4,
+[class*="dj-section-dark"] h5,
+[class*="dj-section-dark"] h6 {
+  color: var(--text-on-dark) !important;
+}
+
+[class*="dj-section-dark"] .c-paragraph,
+[class*="dj-section-dark"] p {
+  color: var(--text-muted) !important;
+}
+
+[class*="dj-section-darker"] .c-heading,
+[class*="dj-section-darker"] h1,
+[class*="dj-section-darker"] h2,
+[class*="dj-section-darker"] h3,
+[class*="dj-section-darker"] h4,
+[class*="dj-section-darker"] h5,
+[class*="dj-section-darker"] h6 {
+  color: var(--text-on-dark) !important;
+}
+
+[class*="dj-section-darker"] .c-paragraph,
+[class*="dj-section-darker"] p {
+  color: var(--text-muted) !important;
+}
+
+/* Hero text colors */
+[class*="dj-hero"] .c-heading,
+[class*="dj-hero"] h1,
+[class*="dj-hero"] h2,
+[class*="dj-hero"] h3 {
+  color: var(--text-on-dark) !important;
+}
+
+[class*="dj-hero"] .c-paragraph,
+[class*="dj-hero"] p {
+  color: var(--text-muted) !important;
+}
+
+/* CTA section text colors */
+[class*="dj-section-cta"] .c-heading,
+[class*="dj-section-cta"] h1,
+[class*="dj-section-cta"] h2 {
+  color: white !important;
+}
+
+[class*="dj-section-cta"] .c-paragraph,
+[class*="dj-section-cta"] p {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Gradient text utility */
+[class*="dj-text-gradient"] {
+  background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-primary) 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+/* Apply gradient to GHL headings */
+[class*="dj-text-gradient"] .c-heading,
+[class*="dj-text-gradient"] h1,
+[class*="dj-text-gradient"] h2,
+[class*="dj-text-gradient"] h3 {
+  background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-primary) 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+/* ========== CONTAINER UTILITIES ========== */
 
 .dj-container {
   width: 100%;
@@ -214,34 +449,67 @@ a:hover {
   padding: 0 var(--container-padding);
 }
 
-.dj-section {
-  padding: var(--space-16) 0;
+/* Apply container to GHL inner */
+[class*="dj-container"] .inner {
+  max-width: var(--container-max) !important;
+  margin: 0 auto !important;
+  padding-left: var(--container-padding) !important;
+  padding-right: var(--container-padding) !important;
 }
 
-.dj-section-lg {
-  padding: var(--space-20) 0;
+/* ========== CARD UTILITIES FOR GHL ROWS ========== */
+
+/* Card styling for GHL Row elements */
+[class*="dj-card"] .c-row {
+  background: white !important;
+  border-radius: var(--radius-xl) !important;
+  overflow: hidden !important;
+  box-shadow: var(--shadow-md) !important;
+  margin-bottom: var(--space-6) !important;
+  border: 1px solid var(--border-light) !important;
+  transition: var(--transition-slow) !important;
 }
 
-/* Text Utilities */
-.dj-text-center { text-align: center; }
-.dj-text-primary { color: var(--text-primary); }
-.dj-text-secondary { color: var(--text-secondary); }
-.dj-text-muted { color: var(--text-muted); }
-.dj-text-accent { color: var(--color-accent); }
-.dj-text-on-dark { color: var(--text-on-dark); }
+[class*="dj-card"] .c-row:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: var(--shadow-lg) !important;
+  border-color: var(--color-primary) !important;
+}
 
-/* Background Utilities */
-.dj-bg-primary { background-color: var(--bg-primary); }
-.dj-bg-secondary { background-color: var(--bg-secondary); }
-.dj-bg-accent { background-color: var(--bg-accent); }
-.dj-bg-dark { background-color: var(--bg-dark); }
+/* Featured card */
+[class*="dj-card-featured"] .c-row {
+  border: 2px solid var(--color-secondary) !important;
+  transform: scale(1.01) !important;
+  box-shadow: var(--shadow-lg) !important;
+}
 
-/* Gradient text */
-.dj-text-gradient {
-  background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-primary) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+[class*="dj-card-featured"] .c-row:hover {
+  transform: scale(1.02) translateY(-4px) !important;
+}
+
+/* Card column padding */
+[class*="dj-card"] .c-row .c-column > .inner {
+  padding: var(--space-8) !important;
+}
+
+/* Card typography */
+[class*="dj-card"] .c-row h1,
+[class*="dj-card"] .c-row h2,
+[class*="dj-card"] .c-row h3,
+[class*="dj-card"] .c-row .c-heading {
+  font-family: var(--font-heading) !important;
+  font-weight: var(--font-bold) !important;
+  color: var(--text-primary) !important;
+  margin-top: 0 !important;
+  margin-bottom: var(--space-4) !important;
+}
+
+[class*="dj-card"] .c-row p,
+[class*="dj-card"] .c-row .c-paragraph {
+  font-family: var(--font-body) !important;
+  color: var(--text-secondary) !important;
+  margin-bottom: var(--space-4) !important;
+  line-height: var(--leading-relaxed) !important;
 }
 
 /* ==========================================================
@@ -399,101 +667,9 @@ a:hover {
   color: var(--text-on-primary) !important;
 }
 
-/* ----- Section Adapters ----- */
-/* Light Section */
-.hl_page-preview--content .dj-section-light,
-.dj-section-light {
-  background: var(--bg-secondary) !important;
-  padding: var(--space-20) 0 !important;
-}
-
-/* Dark Section */
-.hl_page-preview--content .dj-section-dark,
-.dj-section-dark {
-  background: var(--bg-dark) !important;
-  padding: var(--space-20) 0 !important;
-}
-
-.dj-section-dark .c-heading,
-.dj-section-dark h1,
-.dj-section-dark h2,
-.dj-section-dark h3 {
-  color: var(--text-on-dark) !important;
-}
-
-.dj-section-dark .c-paragraph,
-.dj-section-dark p {
-  color: var(--text-muted) !important;
-}
-
-/* Gradient CTA Section */
-.hl_page-preview--content .dj-section-cta,
-.dj-section-cta {
-  background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-secondary-light) 100%) !important;
-  padding: var(--space-20) 0 !important;
-  position: relative !important;
-  overflow: hidden !important;
-}
-
-.dj-section-cta .c-heading,
-.dj-section-cta h1,
-.dj-section-cta h2 {
-  color: white !important;
-}
-
-.dj-section-cta .c-paragraph,
-.dj-section-cta p {
-  color: rgba(255, 255, 255, 0.9) !important;
-}
-
-/* ----- Hero Section Adapter ----- */
-/* For sections with background images */
-.hl_page-preview--content .dj-hero,
-.dj-hero {
-  position: relative !important;
-  min-height: 100vh !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  overflow: hidden !important;
-}
-
-/* Hero background overlay - targets GHL's .bg element */
-.dj-hero .bg {
-  position: absolute !important;
-  inset: 0 !important;
-  z-index: 0 !important;
-}
-
-.dj-hero .bg::after {
-  content: '' !important;
-  position: absolute !important;
-  inset: 0 !important;
-  background: linear-gradient(
-    135deg,
-    rgba(15, 23, 42, 0.95) 0%,
-    rgba(15, 23, 42, 0.85) 50%,
-    rgba(15, 23, 42, 0.75) 100%
-  ) !important;
-  z-index: 1 !important;
-}
-
-.dj-hero .inner {
-  position: relative !important;
-  z-index: 2 !important;
-  width: 100% !important;
-}
-
-.dj-hero .c-heading,
-.dj-hero h1,
-.dj-hero h2 {
-  color: var(--text-on-dark) !important;
-}
-
-.dj-hero .c-paragraph,
-.dj-hero p {
-  color: var(--text-muted) !important;
-}
+/* Note: Section utilities (dj-hero, dj-section-light, dj-section-dark, dj-section-cta) 
+   are now defined in the Utility Classes section above using attribute selectors
+   for better flexibility and compatibility with GHL's structure. */
 
 /* ==========================================================
    6. HEADER COMPONENT STYLES
