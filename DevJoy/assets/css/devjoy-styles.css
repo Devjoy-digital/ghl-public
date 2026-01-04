@@ -1,5 +1,5 @@
-/* DevJoy - Site-Level CSS Styles
-      IMPORTANT: This file works WITH GHL's native CSS classes:
+/* DevJoy - Site-Level CSS Styles   
+   IMPORTANT: This file works WITH GHL's native CSS classes:
    - .c-row, .c-column, .c-heading, .c-paragraph, .inner, .bg, .section-[ID]
    - Uses !important where needed to override GHL's high-specificity defaults
 
@@ -254,6 +254,12 @@ a:hover {
     rgba(15, 23, 42, 0.75) 100%
   ) !important;
   z-index: 1 !important;
+}
+
+/* Disable overlay when using dj-hero-no-overlay modifier */
+[class*="dj-hero-no-overlay"] .bg::after {
+  display: none !important;
+  content: none !important;
 }
 
 [class*="dj-hero"] .inner {
