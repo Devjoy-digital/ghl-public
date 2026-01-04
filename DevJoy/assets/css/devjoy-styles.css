@@ -489,7 +489,8 @@ a:hover {
   box-shadow: var(--shadow-md);
 }
 
-.dj-header .header-inner {
+.dj-header .header-inner,
+.dj-header .c-row {
   max-width: var(--container-max);
   margin: 0 auto;
   padding: var(--space-4);
@@ -499,7 +500,8 @@ a:hover {
   transition: var(--transition-slow);
 }
 
-.dj-header[data-scrolled="true"] .header-inner {
+.dj-header[data-scrolled="true"] .header-inner,
+.dj-header[data-scrolled="true"] .c-row {
   padding: var(--space-3) var(--space-4);
 }
 
@@ -537,7 +539,8 @@ a:hover {
 }
 
 /* Navigation Styles */
-.dj-header .header-nav {
+.dj-header .header-nav,
+.dj-header .c-column.header-nav {
   display: flex;
   align-items: center;
   gap: var(--space-8);
@@ -552,7 +555,13 @@ a:hover {
   padding: 0;
 }
 
-.dj-header .nav-link {
+.dj-header .nav-link,
+.dj-header nav a,
+.dj-header .header-nav a,
+.dj-header .c-column.header-nav a,
+.dj-header ul li a,
+.dj-header .c-column ul a,
+.dj-header .c-column ol a {
   font-family: var(--font-body);
   font-size: var(--text-base);
   font-weight: var(--font-medium);
@@ -562,7 +571,13 @@ a:hover {
   position: relative;
 }
 
-.dj-header .nav-link::after {
+.dj-header .nav-link::after,
+.dj-header nav a::after,
+.dj-header .header-nav a::after,
+.dj-header .c-column.header-nav a::after,
+.dj-header ul li a::after,
+.dj-header .c-column ul a::after,
+.dj-header .c-column ol a::after {
   content: '';
   position: absolute;
   bottom: -4px;
@@ -573,16 +588,33 @@ a:hover {
   transition: var(--transition-base);
 }
 
-.dj-header .nav-link:hover {
+.dj-header .nav-link:hover,
+.dj-header nav a:hover,
+.dj-header .header-nav a:hover,
+.dj-header .c-column.header-nav a:hover,
+.dj-header ul li a:hover,
+.dj-header .c-column ul a:hover,
+.dj-header .c-column ol a:hover {
   color: var(--color-primary);
 }
 
-.dj-header .nav-link:hover::after {
+.dj-header .nav-link:hover::after,
+.dj-header nav a:hover::after,
+.dj-header .header-nav a:hover::after,
+.dj-header .c-column.header-nav a:hover::after,
+.dj-header ul li a:hover::after,
+.dj-header .c-column ul a:hover::after,
+.dj-header .c-column ol a:hover::after {
   width: 100%;
 }
 
+/* Note: CTA button styles are defined below and will override nav link styles */
+
 /* Header CTA Button */
-.dj-header .header-cta {
+.dj-header .header-cta,
+.dj-header .header-nav button,
+.dj-header .c-column.header-nav button,
+.dj-header button.header-cta {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -596,9 +628,21 @@ a:hover {
   border-radius: var(--radius-md);
   text-decoration: none;
   transition: var(--transition-base);
+  position: relative;
 }
 
-.dj-header .header-cta:hover {
+/* Remove nav link underline from CTA */
+.dj-header .header-cta::after,
+.dj-header .header-nav button::after,
+.dj-header .c-column.header-nav button::after,
+.dj-header button.header-cta::after {
+  display: none;
+}
+
+.dj-header .header-cta:hover,
+.dj-header .header-nav button:hover,
+.dj-header .c-column.header-nav button:hover,
+.dj-header button.header-cta:hover {
   background: var(--color-primary);
   border-color: var(--color-primary);
   color: var(--text-on-primary);
